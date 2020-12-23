@@ -1,0 +1,90 @@
+import java.util.*;
+
+abstract class Student
+{
+  private String name;
+  protected int ID;
+  double grades;
+  public int age;
+  abstract boolean isPassed(double Grade);
+  final void setter(String nam)
+  {
+    name=nam;
+  }
+  String getter()
+  {
+    return name;
+  }
+}
+
+class undergrad extends Student
+{
+
+  void getData()
+  {
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter Name:");
+    setter(input.next());
+    System.out.println("Enter Age:");
+    age = input.nextInt();
+    System.out.println("Enter ID:");
+    ID = input.nextInt();
+  }
+
+  boolean isPassed(double Grade)
+  {
+    if(Grade>=70)
+       return true;
+    else
+       return false;
+  }
+
+  void display()
+  {
+    System.out.println("\nName"+getter()+"\nAge"+age+"\nID:"+ID);
+  }
+}
+
+class Grad extends Student
+{
+  void getData()
+  { Scanner input = new Scanner(System.in);
+    System.out.println("Enter Name:");
+    setter(input.next());
+    System.out.println("Enter Age:");
+    age = input.nextInt();
+    System.out.println("Enter ID:");
+    ID = input.nextInt();
+  }
+  boolean isPassed(double Grade)
+  {
+     if(Grade<=80)
+      return false;
+     else
+      return true;
+  }
+  void display()
+  {
+    System.out.println("Name:"+getter()+"\nAge:"+age+"\nID:"+ID);
+  }
+}
+
+class Main
+{
+  public static void main(String[] args)
+  {
+    undergrad ug = new undergrad();
+    Grad g = new Grad();
+    ug.getData();
+    if (ug.isPassed(66))
+         System.out.println(ug.getter()+" is passed");
+    else
+         System.out.println(ug.getter()+" is Not passed");
+    g.getData();
+    if (g.isPassed(85))
+         System.out.println(g.getter()+" is passed");
+    else
+         System.out.println(g.getter()+" is Not passed");
+  }
+}
+
